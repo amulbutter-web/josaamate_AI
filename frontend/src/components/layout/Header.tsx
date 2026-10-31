@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Bell, ChevronRight, X, PanelLeftClose, PanelLeftOpen, Sun, Moon, Sparkles } from 'lucide-react';
+import { Bell, ChevronRight, X, Sun, Moon, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../store/AppContext';
 import StudioBadge from '../ui/StudioBadge';
@@ -99,24 +99,8 @@ const Header: React.FC = () => {
 
       {/* Main header row */}
       <div className="flex items-center justify-between h-16 px-6">
-        {/* Left: Sidebar Toggle + Breadcrumb */}
+        {/* Left: Breadcrumb */}
         <div className="flex items-center gap-3 min-w-0 flex-1">
-          <button
-            onClick={() => dispatch({ type: 'TOGGLE_SIDEBAR' })}
-            title={state.sidebarOpen ? 'Close sidebar (Ctrl+B)' : 'Open sidebar (Ctrl+B)'}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all shrink-0 border text-xs font-semibold ${
-              state.sidebarOpen
-                ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-slate-800 border-gray-200 dark:border-slate-700'
-                : 'text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-300 dark:border-indigo-800 hover:bg-indigo-100 shadow-sm'
-            }`}
-            aria-label={state.sidebarOpen ? 'Close sidebar' : 'Open sidebar'}
-          >
-            {state.sidebarOpen ? <PanelLeftClose size={16} /> : <PanelLeftOpen size={16} />}
-            <span className="hidden sm:inline">
-              {state.sidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
-            </span>
-          </button>
-
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1.5 min-w-0" aria-label="Breadcrumb">
           {breadcrumbs.length === 0 ? (
